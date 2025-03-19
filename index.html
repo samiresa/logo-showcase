@@ -5,29 +5,52 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Logo Showcase</title>
   <style>
+    /* Body background color (optional). Change or remove if you prefer transparent. */
+    body {
+      background: #34415E; 
+      margin: 0;
+      padding: 0;
+    }
+
     .logo-container {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
+      /* Adds spacing between logo boxes. You can adjust or remove. */
+      gap: 10px; 
+      /* Padding around the entire container. Adjust as needed. */
+      padding: 20px; 
     }
+
+    /* Each logo is placed in a white box of fixed size for uniformity. */
     .logo-container div {
-      margin: 10px;
-      width: 100px;   /* Fixed container width */
-      height: 100px;  /* Fixed container height */
-    }
-    .logo-container img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
+      width: 150px;
+      height: 150px;
+      background: #fff;        /* White background for each logo box */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 5px;      /* Slight rounding of corners, optional */
       transition: transform 0.3s ease;
     }
-    .logo-container img:hover {
-      transform: scale(1.1);
+
+    /* Subtle hover scale on the entire box (including the image). */
+    .logo-container div:hover {
+      transform: scale(1.05);
     }
+
+    /* Logos will scale down if they’re bigger than the box, keeping their aspect ratio. */
+    .logo-container img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+    }
+
+    /* Responsive sizing: smaller boxes on narrow screens. Adjust as you like. */
     @media screen and (max-width: 600px) {
       .logo-container div {
-        width: 70px;
-        height: 70px;
+        width: 100px;
+        height: 100px;
       }
     }
   </style>
