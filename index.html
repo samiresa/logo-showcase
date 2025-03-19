@@ -2,153 +2,127 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <title>Scrolling Logos</title>
+  <title>Scrolling Logos (Fluid)</title>
   <style>
-    /* Reset extra spacing */
+    /* Reset margins & padding */
     * {
-      padding: 0 !important;
-      margin: 0 !important;
+      margin: 0; 
+      padding: 0; 
       box-sizing: border-box;
     }
-
-    html, body {
+    body {
       background: transparent;
       font-family: Arial, sans-serif;
     }
-
-    /* No-scroll container: forces full viewport width and hides overflow */
-    .no-scroll {
-      width: 100vw !important;
-      overflow: hidden !important;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin: 0 auto !important;
-    }
-
-    /* Standard container for your content */
-    .container {
-      width: 100%;
-      padding: 20px 0;
-      overflow: hidden;
-      position: relative;
-      background: transparent;
-    }
-
     h1 {
       text-align: center;
-      margin-bottom: 20px;
+      margin: 1rem 0;
     }
 
-    /* The slider: double width for two sets of logos */
-    .slider {
-      display: inline-block;
-      width: 200%;
-      white-space: nowrap;
-      animation: slidein 45s linear infinite;
+    /* Outer container to hide overflow */
+    .scroll-container {
+      width: 100%;
+      overflow: hidden;   /* Clip anything outside the container */
+      position: relative;
+      /* The height is based on the viewport width; 
+         you can tweak these to your preference */
+      height: 20vw;       
+      max-height: 150px;  
     }
+
+    /* The row that scrolls left continuously */
+    .slider {
+      display: flex;
+      flex-wrap: nowrap;
+      animation: scroll-left 30s linear infinite;
+      gap: 2vw;  /* spacing between logos, in viewport width */
+      white-space: nowrap;
+    }
+
+    /* Pause on hover (desktop only, but won’t hurt mobile) */
     .slider:hover {
       animation-play-state: paused;
     }
 
-    /* Each set of logos takes up half the slider width */
+    /* Each set of logos is repeated for a continuous effect */
     .logos {
-      display: inline-block;
-      width: 50%;
-      vertical-align: top;
+      display: flex;     /* so items line up horizontally */
+      flex-wrap: nowrap;
     }
 
-    /* Each logo is placed in a fixed 150x150 box with spacing */
-    .logos a {
-      display: inline-block;
-      width: 150px;
-      height: 150px;
-      margin: 0 10px;
-      overflow: hidden;
-      vertical-align: middle;
+    /* Each logo is “flex: 0 0 auto” so it doesn’t shrink or wrap */
+    .logo {
+      flex: 0 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: auto;    /* Let the image define width */
+      height: 100%;   /* Match the container’s height */
     }
-    .logos a img {
-      width: 100%;
+
+    .logo img {
       height: 100%;
+      width: auto;
       object-fit: contain;
     }
 
-    @keyframes slidein {
-      0% {
-        transform: translateX(0);
-      }
-      100% {
-        transform: translateX(-50%);
-      }
-    }
-
-    /* Mobile fixes (optional) */
-    @media (max-width: 768px) {
-      .no-scroll {
-        width: 100vw !important;
-      }
-    }
-    @media (max-width: 480px) {
-      .no-scroll {
-        width: 100vw !important;
-      }
+    /* Keyframe to move the slider from right to left */
+    @keyframes scroll-left {
+      0%   { transform: translateX(100%); }
+      100% { transform: translateX(-100%); }
     }
   </style>
 </head>
 <body>
-  <!-- Wrap everything in the no-scroll container -->
-  <div class="no-scroll">
-    <div class="container">
-      <div class="slider">
-        <!-- First set of logos -->
-        <div class="logos">
+  <div class="scroll-container">
+    <div class="slider">
+      <!-- First batch of logos -->
+      <div class="logos">
+        <div class="logo">
           <a href="https://washingtonfaire.com" target="_blank">
             <img src="https://raw.githubusercontent.com/samiresa/logo-showcase/main/images/Logo1.png" alt="Logo 1">
           </a>
+        </div>
+        <div class="logo">
           <a href="https://bricksandminifigs.com/southeverett-wa/" target="_blank">
             <img src="https://raw.githubusercontent.com/samiresa/logo-showcase/main/images/Logo2.png" alt="Logo 2">
           </a>
+        </div>
+        <div class="logo">
           <a href="https://www.chessex.com" target="_blank">
             <img src="https://raw.githubusercontent.com/samiresa/logo-showcase/main/images/Logo3.png" alt="Logo 3">
           </a>
+        </div>
+        <div class="logo">
           <a href="https://www.riograndegames.com" target="_blank">
             <img src="https://raw.githubusercontent.com/samiresa/logo-showcase/main/images/Logo4.png" alt="Logo 4">
           </a>
+        </div>
+        <div class="logo">
           <a href="https://app.demiplane.com/home" target="_blank">
             <img src="https://raw.githubusercontent.com/samiresa/logo-showcase/main/images/Logo5.png" alt="Logo 5">
           </a>
+        </div>
+        <div class="logo">
           <a href="https://ledergames.com/" target="_blank">
             <img src="https://raw.githubusercontent.com/samiresa/logo-showcase/main/images/Logo6.png" alt="Logo 6">
           </a>
+        </div>
+        <div class="logo">
           <a href="https://dispeldice.com/" target="_blank">
             <img src="https://raw.githubusercontent.com/samiresa/logo-showcase/main/images/Logo7.png" alt="Logo 7">
           </a>
         </div>
-        <!-- Duplicate logos for seamless looping -->
-        <div class="logos">
+      </div>
+      <!-- Duplicate the logos for a seamless loop -->
+      <div class="logos">
+        <!-- Repeat the same 7 logos here -->
+        <div class="logo">
           <a href="https://washingtonfaire.com" target="_blank">
             <img src="https://raw.githubusercontent.com/samiresa/logo-showcase/main/images/Logo1.png" alt="Logo 1">
           </a>
-          <a href="https://bricksandminifigs.com/southeverett-wa/" target="_blank">
-            <img src="https://raw.githubusercontent.com/samiresa/logo-showcase/main/images/Logo2.png" alt="Logo 2">
-          </a>
-          <a href="https://www.chessex.com" target="_blank">
-            <img src="https://raw.githubusercontent.com/samiresa/logo-showcase/main/images/Logo3.png" alt="Logo 3">
-          </a>
-          <a href="https://www.riograndegames.com" target="_blank">
-            <img src="https://raw.githubusercontent.com/samiresa/logo-showcase/main/images/Logo4.png" alt="Logo 4">
-          </a>
-          <a href="https://app.demiplane.com/home" target="_blank">
-            <img src="https://raw.githubusercontent.com/samiresa/logo-showcase/main/images/Logo5.png" alt="Logo 5">
-          </a>
-          <a href="https://ledergames.com/" target="_blank">
-            <img src="https://raw.githubusercontent.com/samiresa/logo-showcase/main/images/Logo6.png" alt="Logo 6">
-          </a>
-          <a href="https://dispeldice.com/" target="_blank">
-            <img src="https://raw.githubusercontent.com/samiresa/logo-showcase/main/images/Logo7.png" alt="Logo 7">
-          </a>
         </div>
+        <!-- ... repeat all logos ... -->
       </div>
     </div>
   </div>
