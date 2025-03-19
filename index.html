@@ -1,90 +1,89 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Scrolling Logos</title>
   <style>
-    /* Body background color (optional) */
-    body {
-      background: #34415E;
+    body, html {
+      height: 100%;
       margin: 0;
       padding: 0;
+      background-color: white;
+      font-family: Arial, sans-serif;
     }
 
-    /* Outer container with hidden overflow to clip scrolling logos */
-    .scroll-container {
-      width: 100%;
+    /* Outer container to hide overflow */
+    .container {
       overflow: hidden;
       position: relative;
-      padding: 20px 0; /* Some vertical spacing */
+      padding: 20px 0;
     }
 
-    /* The row of logos that moves left via animation */
-    .scrolling-logos {
-      display: inline-flex;       /* So logos line up horizontally */
-      white-space: nowrap;        /* Prevent line-wrapping */
-      animation: scroll-left 20s linear infinite; /* 20s scroll, infinite loop */
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
     }
 
-    /* Each logo in a white box for uniform sizing */
-    .scrolling-logos div {
-      width: 150px; 
-      height: 150px;
-      background: #fff;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-right: 10px;
-      border-radius: 5px;
+    /* Slider that scrolls continuously */
+    .slider {
+      animation: slidein 30s linear infinite;
+      white-space: nowrap;
     }
 
-    /* Make sure logos fit within their boxes */
-    .scrolling-logos img {
-      max-width: 100%;
-      max-height: 100%;
-      object-fit: contain;
+    /* Each batch of logos */
+    .logos {
+      display: inline-block;
+      width: 100%;
+      margin: 0;
     }
 
-    /* The scrolling keyframe animation */
-    @keyframes scroll-left {
-      0% {
-        transform: translateX(100%);
+    /* Style for logo images */
+    .logos img {
+      width: calc(100% / 7);  /* 7 logos per row */
+      vertical-align: middle;
+      animation: fade-in 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955) forwards;
+    }
+
+    @keyframes slidein {
+      from {
+        transform: translate3d(0, 0, 0);
       }
-      100% {
-        transform: translateX(-100%);
+      to {
+        transform: translate3d(-100%, 0, 0);
       }
     }
 
-    /* Responsive sizing on small screens */
-    @media screen and (max-width: 600px) {
-      .scrolling-logos div {
-        width: 100px;
-        height: 100px;
-      }
+    @keyframes fade-in {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
     }
   </style>
 </head>
 <body>
-  <div class="scroll-container">
-    <div class="scrolling-logos">
+  <div class="container">
+    <h1>Featured in:</h1>
+    <div class="slider">
       <!-- First batch of logos -->
-      <div><img src="https://raw.githubusercontent.com/samiresa/logo-showcase/main/images/Logo1.png" alt="Logo 1"></div>
-      <div><img src="https://raw.githubusercontent.com/samiresa/logo-showcase/main/images/Logo2.png" alt="Logo 2"></div>
-      <div><img src="https://raw.githubusercontent.com/samiresa/logo-showcase/main/images/Logo3.png" alt="Logo 3"></div>
-      <div><img src="https://raw.githubusercontent.com/samiresa/logo-showcase/main/images/Logo4.png" alt="Logo 4"></div>
-      <div><img src="https://raw.githubusercontent.com/samiresa/logo-showcase/main/images/Logo5.png" alt="Logo 5"></div>
-      <div><img src="https://raw.githubusercontent.com/samiresa/logo-showcase/main/images/Logo6.png" alt="Logo 6"></div>
-      <div><img src="https://raw.githubusercontent.com/samiresa/logo-showcase/main/images/Logo7.png" alt="Logo 7"></div>
-
-      <!-- Duplicate the logos for a seamless infinite scroll -->
-      <div><img src="https://raw.githubusercontent.com/samiresa/logo-showcase/main/images/Logo1.png" alt="Logo 1"></div>
-      <div><img src="https://raw.githubusercontent.com/samiresa/logo-showcase/main/images/Logo2.png" alt="Logo 2"></div>
-      <div><img src="https://raw.githubusercontent.com/samiresa/logo-showcase/main/images/Logo3.png" alt="Logo 3"></div>
-      <div><img src="https://raw.githubusercontent.com/samiresa/logo-showcase/main/images/Logo4.png" alt="Logo 4"></div>
-      <div><img src="https://raw.githubusercontent.com/samiresa/logo-showcase/main/images/Logo5.png" alt="Logo 5"></div>
-      <div><img src="https://raw.githubusercontent.com/samiresa/logo-showcase/main/images/Logo6.png" alt="Logo 6"></div>
-      <div><img src="https://raw.githubusercontent.com/samiresa/logo-showcase/main/images/Logo7.png" alt="Logo 7"></div>
+      <div class="logos">
+        <img src="https://raw.githubusercontent.com/samiresa/logo-showcase/main/images/Logo1.png" alt="Logo 1">
+        <img src="https://raw.githubusercontent.com/samiresa/logo-showcase/main/images/Logo2.png" alt="Logo 2">
+        <img src="https://raw.githubusercontent.com/samiresa/logo-showcase/main/images/Logo3.png" alt="Logo 3">
+        <img src="https://raw.githubusercontent.com/samiresa/logo-showcase/main/images/Logo4.png" alt="Logo 4">
+        <img src="https://raw.githubusercontent.com/samiresa/logo-showcase/main/images/Logo5.png" alt="Logo 5">
+        <img src="https://raw.githubusercontent.com/samiresa/logo-showcase/main/images/Logo6.png" alt="Logo 6">
+        <img src="https://raw.githubusercontent.com/samiresa/logo-showcase/main/images/Logo7.png" alt="Logo 7">
+      </div>
+      <!-- Duplicate logos for seamless scrolling -->
+      <div class="logos">
+        <img src="https://raw.githubusercontent.com/samiresa/logo-showcase/main/images/Logo1.png" alt="Logo 1">
+        <img src="https://raw.githubusercontent.com/samiresa/logo-showcase/main/images/Logo2.png" alt="Logo 2">
+        <img src="https://raw.githubusercontent.com/samiresa/logo-showcase/main/images/Logo3.png" alt="Logo 3">
+        <img src="https://raw.githubusercontent.com/samiresa/logo-showcase/main/images/Logo4.png" alt="Logo 4">
+        <img src="https://raw.githubusercontent.com/samiresa/logo-showcase/main/images/Logo5.png" alt="Logo 5">
+        <img src="https://raw.githubusercontent.com/samiresa/logo-showcase/main/images/Logo6.png" alt="Logo 6">
+        <img src="https://raw.githubusercontent.com/samiresa/logo-showcase/main/images/Logo7.png" alt="Logo 7">
+      </div>
     </div>
   </div>
 </body>
