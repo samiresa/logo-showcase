@@ -16,15 +16,15 @@
     /* Container that clips the overflow */
     .container {
       width: 100%;
-      overflow: hidden; /* Hide overflow */
+      overflow: hidden; /* Ensures content beyond container is hidden */
       position: relative;
       padding: 20px 0;
       background: transparent;
       box-sizing: border-box;
-      
-      /* Hide scrollbar in Firefox & IE/Edge */
-      scrollbar-width: none;       
-      -ms-overflow-style: none;
+
+      /* Hide scrollbar in most browsers */
+      scrollbar-width: none;       /* Firefox */
+      -ms-overflow-style: none;    /* Internet Explorer/Edge */
     }
     /* Hide scrollbar in WebKit browsers (Chrome, Safari, Opera) */
     .container::-webkit-scrollbar {
@@ -56,24 +56,24 @@
       vertical-align: top;
     }
 
-    /* Each logo is a fixed 150×150 box with margin */
+    /* Each logo is a 150×150 box with margin */
     .logos a {
       display: inline-block;
       width: 150px;
       height: 150px;
-      margin: 0 10px; /* Increase spacing between logos */
+      margin: 0 10px; /* spacing between logos */
       overflow: hidden;
       vertical-align: middle;
     }
 
-    /* Ensure image fits within its 150×150 container */
+    /* Fit the image within the 150×150 box */
     .logos a img {
       width: 100%;
       height: 100%;
       object-fit: contain;
     }
 
-    /* Scroll animation from 0 to -50% so the duplicate loops smoothly */
+    /* The scroll animation goes from 0% to -50% */
     @keyframes slidein {
       0% {
         transform: translateX(0);
@@ -86,7 +86,6 @@
 </head>
 <body>
   <div class="container">
-    <h1>Thank You To Our Sponsors</h1>
     <div class="slider">
       <!-- First set of logos -->
       <div class="logos">
@@ -133,11 +132,3 @@
         <a href="https://ledergames.com/" target="_blank">
           <img src="https://raw.githubusercontent.com/samiresa/logo-showcase/main/images/Logo6.png" alt="Logo 6">
         </a>
-        <a href="https://dispeldice.com/" target="_blank">
-          <img src="https://raw.githubusercontent.com/samiresa/logo-showcase/main/images/Logo7.png" alt="Logo 7">
-        </a>
-      </div>
-    </div>
-  </div>
-</body>
-</html>
