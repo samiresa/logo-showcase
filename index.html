@@ -9,7 +9,7 @@
       height: 100%;
       margin: 0;
       padding: 0;
-      background-color: white;
+      background-color: transparent;
       font-family: Arial, sans-serif;
     }
 
@@ -25,7 +25,7 @@
       margin-bottom: 20px;
     }
 
-    /* Slider that scrolls continuously; updated duration to 45s */
+    /* Slider that scrolls continuously */
     .slider {
       animation: slidein 45s linear infinite;
       white-space: nowrap;
@@ -46,8 +46,9 @@
     /* Style for logo links and images */
     .logos a {
       display: inline-block;
-      width: calc(100% / 7);  /* 7 logos per row */
+      width: calc(100% / 7);
       vertical-align: middle;
+      margin-right: 10px;  /* Added spacing between logos */
     }
 
     .logos a img {
