@@ -12,18 +12,22 @@
     }
     .logo-container div {
       margin: 10px;
+      width: 100px;   /* Fixed container width */
+      height: 100px;  /* Fixed container height */
     }
     .logo-container img {
-      width: 100px; /* Adjust as needed */
-      transition: transform 0.3s;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      transition: transform 0.3s ease;
     }
-    /* Hover effect */
     .logo-container img:hover {
       transform: scale(1.1);
     }
     @media screen and (max-width: 600px) {
-      .logo-container img {
+      .logo-container div {
         width: 70px;
+        height: 70px;
       }
     }
   </style>
