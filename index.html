@@ -1,54 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Logo Showcase</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Scrolling Logos</title>
   <style>
-    /* Body background color (optional). Change or remove if you prefer transparent. */
+    /* Body background color (optional) */
     body {
-      background: #34415E; 
+      background: #34415E;
       margin: 0;
       padding: 0;
     }
 
-    .logo-container {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      /* Adds spacing between logo boxes. You can adjust or remove. */
-      gap: 10px; 
-      /* Padding around the entire container. Adjust as needed. */
-      padding: 20px; 
+    /* Outer container with hidden overflow to clip scrolling logos */
+    .scroll-container {
+      width: 100%;
+      overflow: hidden;
+      position: relative;
+      padding: 20px 0; /* Some vertical spacing */
     }
 
-    /* Each logo is placed in a white box of fixed size for uniformity. */
-    .logo-container div {
-      width: 150px;
+    /* The row of logos that moves left via animation */
+    .scrolling-logos {
+      display: inline-flex;       /* So logos line up horizontally */
+      white-space: nowrap;        /* Prevent line-wrapping */
+      animation: scroll-left 20s linear infinite; /* 20s scroll, infinite loop */
+    }
+
+    /* Each logo in a white box for uniform sizing */
+    .scrolling-logos div {
+      width: 150px; 
       height: 150px;
-      background: #fff;        /* White background for each logo box */
+      background: #fff;
       display: flex;
       align-items: center;
       justify-content: center;
-      border-radius: 5px;      /* Slight rounding of corners, optional */
-      transition: transform 0.3s ease;
+      margin-right: 10px;
+      border-radius: 5px;
     }
 
-    /* Subtle hover scale on the entire box (including the image). */
-    .logo-container div:hover {
-      transform: scale(1.05);
-    }
-
-    /* Logos will scale down if they’re bigger than the box, keeping their aspect ratio. */
-    .logo-container img {
+    /* Make sure logos fit within their boxes */
+    .scrolling-logos img {
       max-width: 100%;
       max-height: 100%;
       object-fit: contain;
     }
 
-    /* Responsive sizing: smaller boxes on narrow screens. Adjust as you like. */
+    /* The scrolling keyframe animation */
+    @keyframes scroll-left {
+      0% {
+        transform: translateX(100%);
+      }
+      100% {
+        transform: translateX(-100%);
+      }
+    }
+
+    /* Responsive sizing on small screens */
     @media screen and (max-width: 600px) {
-      .logo-container div {
+      .scrolling-logos div {
         width: 100px;
         height: 100px;
       }
@@ -56,14 +66,26 @@
   </style>
 </head>
 <body>
-  <div class="logo-container">
-    <div><img src="https://raw.githubusercontent.com/samiresa/logo-showcase/main/images/Logo1.png" alt="Logo 1"></div>
-    <div><img src="https://raw.githubusercontent.com/samiresa/logo-showcase/main/images/Logo2.png" alt="Logo 2"></div>
-    <div><img src="https://raw.githubusercontent.com/samiresa/logo-showcase/main/images/Logo3.png" alt="Logo 3"></div>
-    <div><img src="https://raw.githubusercontent.com/samiresa/logo-showcase/main/images/Logo4.png" alt="Logo 4"></div>
-    <div><img src="https://raw.githubusercontent.com/samiresa/logo-showcase/main/images/Logo5.png" alt="Logo 5"></div>
-    <div><img src="https://raw.githubusercontent.com/samiresa/logo-showcase/main/images/Logo6.png" alt="Logo 6"></div>
-    <div><img src="https://raw.githubusercontent.com/samiresa/logo-showcase/main/images/Logo7.png" alt="Logo 7"></div>
+  <div class="scroll-container">
+    <div class="scrolling-logos">
+      <!-- First batch of logos -->
+      <div><img src="https://raw.githubusercontent.com/samiresa/logo-showcase/main/images/Logo1.png" alt="Logo 1"></div>
+      <div><img src="https://raw.githubusercontent.com/samiresa/logo-showcase/main/images/Logo2.png" alt="Logo 2"></div>
+      <div><img src="https://raw.githubusercontent.com/samiresa/logo-showcase/main/images/Logo3.png" alt="Logo 3"></div>
+      <div><img src="https://raw.githubusercontent.com/samiresa/logo-showcase/main/images/Logo4.png" alt="Logo 4"></div>
+      <div><img src="https://raw.githubusercontent.com/samiresa/logo-showcase/main/images/Logo5.png" alt="Logo 5"></div>
+      <div><img src="https://raw.githubusercontent.com/samiresa/logo-showcase/main/images/Logo6.png" alt="Logo 6"></div>
+      <div><img src="https://raw.githubusercontent.com/samiresa/logo-showcase/main/images/Logo7.png" alt="Logo 7"></div>
+
+      <!-- Duplicate the logos for a seamless infinite scroll -->
+      <div><img src="https://raw.githubusercontent.com/samiresa/logo-showcase/main/images/Logo1.png" alt="Logo 1"></div>
+      <div><img src="https://raw.githubusercontent.com/samiresa/logo-showcase/main/images/Logo2.png" alt="Logo 2"></div>
+      <div><img src="https://raw.githubusercontent.com/samiresa/logo-showcase/main/images/Logo3.png" alt="Logo 3"></div>
+      <div><img src="https://raw.githubusercontent.com/samiresa/logo-showcase/main/images/Logo4.png" alt="Logo 4"></div>
+      <div><img src="https://raw.githubusercontent.com/samiresa/logo-showcase/main/images/Logo5.png" alt="Logo 5"></div>
+      <div><img src="https://raw.githubusercontent.com/samiresa/logo-showcase/main/images/Logo6.png" alt="Logo 6"></div>
+      <div><img src="https://raw.githubusercontent.com/samiresa/logo-showcase/main/images/Logo7.png" alt="Logo 7"></div>
+    </div>
   </div>
 </body>
 </html>
