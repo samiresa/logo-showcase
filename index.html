@@ -5,30 +5,35 @@
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <title>Scrolling Logos</title>
   <style>
-    /* Reset margins & set transparent background */
+    /* Reset extra spacing */
+    * {
+      padding: 0 !important;
+      margin: 0 !important;
+      box-sizing: border-box;
+    }
+
     html, body {
-      margin: 0;
-      padding: 0;
       background: transparent;
       font-family: Arial, sans-serif;
     }
 
-    /* Container that clips the overflow */
+    /* No-scroll container: forces full viewport width and hides overflow */
+    .no-scroll {
+      width: 100vw !important;
+      overflow: hidden !important;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0 auto !important;
+    }
+
+    /* Standard container for your content */
     .container {
       width: 100%;
-      overflow: hidden; /* Ensures content beyond container is hidden */
-      position: relative;
       padding: 20px 0;
+      overflow: hidden;
+      position: relative;
       background: transparent;
-      box-sizing: border-box;
-
-      /* Hide scrollbar in most browsers */
-      scrollbar-width: none;       /* Firefox */
-      -ms-overflow-style: none;    /* Internet Explorer/Edge */
-    }
-    /* Hide scrollbar in WebKit browsers (Chrome, Safari, Opera) */
-    .container::-webkit-scrollbar {
-      display: none;
     }
 
     h1 {
@@ -36,44 +41,39 @@
       margin-bottom: 20px;
     }
 
-    /* The wide slider that moves left */
+    /* The slider: double width for two sets of logos */
     .slider {
       display: inline-block;
-      width: 200%;                  /* Double the container’s width */
+      width: 200%;
       white-space: nowrap;
       animation: slidein 45s linear infinite;
     }
-
-    /* Pause on hover */
     .slider:hover {
       animation-play-state: paused;
     }
 
-    /* Each set of logos takes up 50% of the slider */
+    /* Each set of logos takes up half the slider width */
     .logos {
       display: inline-block;
       width: 50%;
       vertical-align: top;
     }
 
-    /* Each logo is a 150×150 box with margin */
+    /* Each logo is placed in a fixed 150x150 box with spacing */
     .logos a {
       display: inline-block;
       width: 150px;
       height: 150px;
-      margin: 0 10px; /* spacing between logos */
+      margin: 0 10px;
       overflow: hidden;
       vertical-align: middle;
     }
-
-    /* Fit the image within the 150×150 box */
     .logos a img {
       width: 100%;
       height: 100%;
       object-fit: contain;
     }
 
-    /* The scroll animation goes from 0% to -50% */
     @keyframes slidein {
       0% {
         transform: translateX(0);
@@ -82,53 +82,76 @@
         transform: translateX(-50%);
       }
     }
+
+    /* Mobile fixes (optional) */
+    @media (max-width: 768px) {
+      .no-scroll {
+        width: 100vw !important;
+      }
+    }
+    @media (max-width: 480px) {
+      .no-scroll {
+        width: 100vw !important;
+      }
+    }
   </style>
 </head>
 <body>
-  <div class="container">
-    <div class="slider">
-      <!-- First set of logos -->
-      <div class="logos">
-        <a href="https://washingtonfaire.com" target="_blank">
-          <img src="https://raw.githubusercontent.com/samiresa/logo-showcase/main/images/Logo1.png" alt="Logo 1">
-        </a>
-        <a href="https://bricksandminifigs.com/southeverett-wa/" target="_blank">
-          <img src="https://raw.githubusercontent.com/samiresa/logo-showcase/main/images/Logo2.png" alt="Logo 2">
-        </a>
-        <a href="https://www.chessex.com" target="_blank">
-          <img src="https://raw.githubusercontent.com/samiresa/logo-showcase/main/images/Logo3.png" alt="Logo 3">
-        </a>
-        <a href="https://www.riograndegames.com" target="_blank">
-          <img src="https://raw.githubusercontent.com/samiresa/logo-showcase/main/images/Logo4.png" alt="Logo 4">
-        </a>
-        <a href="https://app.demiplane.com/home" target="_blank">
-          <img src="https://raw.githubusercontent.com/samiresa/logo-showcase/main/images/Logo5.png" alt="Logo 5">
-        </a>
-        <a href="https://ledergames.com/" target="_blank">
-          <img src="https://raw.githubusercontent.com/samiresa/logo-showcase/main/images/Logo6.png" alt="Logo 6">
-        </a>
-        <a href="https://dispeldice.com/" target="_blank">
-          <img src="https://raw.githubusercontent.com/samiresa/logo-showcase/main/images/Logo7.png" alt="Logo 7">
-        </a>
+  <!-- Wrap everything in the no-scroll container -->
+  <div class="no-scroll">
+    <div class="container">
+      <h1>Thank You To Our Sponsors</h1>
+      <div class="slider">
+        <!-- First set of logos -->
+        <div class="logos">
+          <a href="https://washingtonfaire.com" target="_blank">
+            <img src="https://raw.githubusercontent.com/samiresa/logo-showcase/main/images/Logo1.png" alt="Logo 1">
+          </a>
+          <a href="https://bricksandminifigs.com/southeverett-wa/" target="_blank">
+            <img src="https://raw.githubusercontent.com/samiresa/logo-showcase/main/images/Logo2.png" alt="Logo 2">
+          </a>
+          <a href="https://www.chessex.com" target="_blank">
+            <img src="https://raw.githubusercontent.com/samiresa/logo-showcase/main/images/Logo3.png" alt="Logo 3">
+          </a>
+          <a href="https://www.riograndegames.com" target="_blank">
+            <img src="https://raw.githubusercontent.com/samiresa/logo-showcase/main/images/Logo4.png" alt="Logo 4">
+          </a>
+          <a href="https://app.demiplane.com/home" target="_blank">
+            <img src="https://raw.githubusercontent.com/samiresa/logo-showcase/main/images/Logo5.png" alt="Logo 5">
+          </a>
+          <a href="https://ledergames.com/" target="_blank">
+            <img src="https://raw.githubusercontent.com/samiresa/logo-showcase/main/images/Logo6.png" alt="Logo 6">
+          </a>
+          <a href="https://dispeldice.com/" target="_blank">
+            <img src="https://raw.githubusercontent.com/samiresa/logo-showcase/main/images/Logo7.png" alt="Logo 7">
+          </a>
+        </div>
+        <!-- Duplicate logos for seamless looping -->
+        <div class="logos">
+          <a href="https://washingtonfaire.com" target="_blank">
+            <img src="https://raw.githubusercontent.com/samiresa/logo-showcase/main/images/Logo1.png" alt="Logo 1">
+          </a>
+          <a href="https://bricksandminifigs.com/southeverett-wa/" target="_blank">
+            <img src="https://raw.githubusercontent.com/samiresa/logo-showcase/main/images/Logo2.png" alt="Logo 2">
+          </a>
+          <a href="https://www.chessex.com" target="_blank">
+            <img src="https://raw.githubusercontent.com/samiresa/logo-showcase/main/images/Logo3.png" alt="Logo 3">
+          </a>
+          <a href="https://www.riograndegames.com" target="_blank">
+            <img src="https://raw.githubusercontent.com/samiresa/logo-showcase/main/images/Logo4.png" alt="Logo 4">
+          </a>
+          <a href="https://app.demiplane.com/home" target="_blank">
+            <img src="https://raw.githubusercontent.com/samiresa/logo-showcase/main/images/Logo5.png" alt="Logo 5">
+          </a>
+          <a href="https://ledergames.com/" target="_blank">
+            <img src="https://raw.githubusercontent.com/samiresa/logo-showcase/main/images/Logo6.png" alt="Logo 6">
+          </a>
+          <a href="https://dispeldice.com/" target="_blank">
+            <img src="https://raw.githubusercontent.com/samiresa/logo-showcase/main/images/Logo7.png" alt="Logo 7">
+          </a>
+        </div>
       </div>
-
-      <!-- Second set of logos (duplicate) -->
-      <div class="logos">
-        <a href="https://washingtonfaire.com" target="_blank">
-          <img src="https://raw.githubusercontent.com/samiresa/logo-showcase/main/images/Logo1.png" alt="Logo 1">
-        </a>
-        <a href="https://bricksandminifigs.com/southeverett-wa/" target="_blank">
-          <img src="https://raw.githubusercontent.com/samiresa/logo-showcase/main/images/Logo2.png" alt="Logo 2">
-        </a>
-        <a href="https://www.chessex.com" target="_blank">
-          <img src="https://raw.githubusercontent.com/samiresa/logo-showcase/main/images/Logo3.png" alt="Logo 3">
-        </a>
-        <a href="https://www.riograndegames.com" target="_blank">
-          <img src="https://raw.githubusercontent.com/samiresa/logo-showcase/main/images/Logo4.png" alt="Logo 4">
-        </a>
-        <a href="https://app.demiplane.com/home" target="_blank">
-          <img src="https://raw.githubusercontent.com/samiresa/logo-showcase/main/images/Logo5.png" alt="Logo 5">
-        </a>
-        <a href="https://ledergames.com/" target="_blank">
-          <img src="https://raw.githubusercontent.com/samiresa/logo-showcase/main/images/Logo6.png" alt="Logo 6">
-        </a>
+    </div>
+  </div>
+</body>
+</html>
