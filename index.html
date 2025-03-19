@@ -2,22 +2,33 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <title>Scrolling Logos</title>
   <style>
-    body, html {
-      height: 100%;
+    /* Reset margins & set transparent background */
+    html, body {
       margin: 0;
       padding: 0;
-      background-color: transparent;
+      background: transparent;
       font-family: Arial, sans-serif;
     }
 
-    /* Outer container to hide overflow */
+    /* Container that clips the overflow */
     .container {
-      overflow: hidden;
+      width: 100%;
+      overflow: hidden; /* Hide overflow */
       position: relative;
       padding: 20px 0;
+      background: transparent;
+      box-sizing: border-box;
+      
+      /* Hide scrollbar in Firefox & IE/Edge */
+      scrollbar-width: none;       
+      -ms-overflow-style: none;
+    }
+    /* Hide scrollbar in WebKit browsers (Chrome, Safari, Opera) */
+    .container::-webkit-scrollbar {
+      display: none;
     }
 
     h1 {
@@ -25,56 +36,59 @@
       margin-bottom: 20px;
     }
 
-    /* Slider that scrolls continuously */
+    /* The wide slider that moves left */
     .slider {
-      animation: slidein 45s linear infinite;
+      display: inline-block;
+      width: 200%;                  /* Double the container’s width */
       white-space: nowrap;
+      animation: slidein 45s linear infinite;
     }
 
-    /* Pause animation when mouse hovers over slider */
+    /* Pause on hover */
     .slider:hover {
       animation-play-state: paused;
     }
 
-    /* Each batch of logos */
+    /* Each set of logos takes up 50% of the slider */
     .logos {
       display: inline-block;
-      width: 100%;
-      margin: 0;
+      width: 50%;
+      vertical-align: top;
     }
 
-    /* Style for logo links and images */
+    /* Each logo is a fixed 150×150 box with margin */
     .logos a {
       display: inline-block;
-      width: calc(100% / 7);
+      width: 150px;
+      height: 150px;
+      margin: 0 10px; /* Increase spacing between logos */
+      overflow: hidden;
       vertical-align: middle;
-      margin-right: 10px;  /* Added spacing between logos */
     }
 
+    /* Ensure image fits within its 150×150 container */
     .logos a img {
       width: 100%;
-      animation: fade-in 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955) forwards;
+      height: 100%;
+      object-fit: contain;
     }
 
+    /* Scroll animation from 0 to -50% so the duplicate loops smoothly */
     @keyframes slidein {
-      from {
-        transform: translate3d(0, 0, 0);
+      0% {
+        transform: translateX(0);
       }
-      to {
-        transform: translate3d(-100%, 0, 0);
+      100% {
+        transform: translateX(-50%);
       }
-    }
-
-    @keyframes fade-in {
-      0% { opacity: 0; }
-      100% { opacity: 1; }
     }
   </style>
 </head>
 <body>
   <div class="container">
+    <h1>Thank You To Our Sponsors</h1>
     <div class="slider">
-      <!-- First batch of logos -->
+      <!-- First set of logos -->
       <div class="logos">
         <a href="https://washingtonfaire.com" target="_blank">
           <img src="https://raw.githubusercontent.com/samiresa/logo-showcase/main/images/Logo1.png" alt="Logo 1">
@@ -98,7 +112,8 @@
           <img src="https://raw.githubusercontent.com/samiresa/logo-showcase/main/images/Logo7.png" alt="Logo 7">
         </a>
       </div>
-      <!-- Duplicate logos for seamless scrolling -->
+
+      <!-- Second set of logos (duplicate) -->
       <div class="logos">
         <a href="https://washingtonfaire.com" target="_blank">
           <img src="https://raw.githubusercontent.com/samiresa/logo-showcase/main/images/Logo1.png" alt="Logo 1">
